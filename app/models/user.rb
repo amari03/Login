@@ -2,6 +2,8 @@ class User < ApplicationRecord
     CONFIRMATION_TOKEN_EXPIRATION = 20.minutes
     has_secure_password
 
+    MAILER_FROM_EMAIL = "no-reply@example.com"
+
     before_save :downcase_email
     validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
 
@@ -21,7 +23,10 @@ class User < ApplicationRecord
       !confirmed?
     end
 
-    
+    def send_confirmation_email!
+        confirmation_token = generate_confirmation_token
+        UserMailer.confirmation(self, confirmation_token).deliver_now
+    end
 
     private
 
