@@ -14,12 +14,12 @@ class ConfirmationsController < ApplicationController
     def edit
         @user = User.find_signed(params[:confirmation_token], purpose: :confirm_email)
 
-        if @user.present?
+        if @user.present? && @user.unconfirmed_or_reconfirming?
             @user.confirm!
             login @user
-            redirect_to root_path, notice: "Your email has been confirmed."
+            redirect_to root_path, notice: "Your account has been confirmed."
         else
-            redirect_to new_confirmation_path, alert: "We could not find a user with that confirmation token."
+            redirect_to new_confirmation_path, alert: "Something went wrong."
         end
     end
 

@@ -16,6 +16,10 @@ module Authentication
         reset_session
     end
 
+    def authenticate_user!
+        redirect_to root_path, alert: "you need to login to access that page." unless user_signed_in?
+    end
+
     def redirect_if_authenticated
         redirect_to root_path, alert: "You are logged in." if user_signed_in?
     end
