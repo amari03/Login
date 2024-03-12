@@ -2,6 +2,8 @@ class User < ApplicationRecord
     CONFIRMATION_TOKEN_EXPIRATION = 20.minutes
     has_secure_password
 
+    has_secure_token :remember_token
+
     MAILER_FROM_EMAIL = "no-reply@example.com"
 
     PASSWORD_RESET_TOKEN_EXPIRATION = 20.minutes
