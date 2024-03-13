@@ -1,5 +1,4 @@
-class Current < ApplicationRecord
-include ActiveSupport::CurrentAttributes
+class Current < ActiveSupport::CurrentAttributes
 
 attribute :user
 end

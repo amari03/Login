@@ -2,8 +2,6 @@ class User < ApplicationRecord
     CONFIRMATION_TOKEN_EXPIRATION = 20.minutes
     has_secure_password
 
-    has_secure_token :remember_token
-
     has_many :active_sessions, dependent: :destroy
 
     MAILER_FROM_EMAIL = "no-reply@example.com"
