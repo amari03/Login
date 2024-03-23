@@ -2,15 +2,17 @@
 <%= render partial: "shared/form_errors", locals: {object: form.object} %>
 <div>
     <%= form.label :email%>
-    <%= form.email_field :email, required :true%>
+    <%= form.email_field :email, required: true %>
+
 </div>
 <div>
     <%= form.label :password%>
-    <%= form.password_field :password, required :true%>
+    <%= form.password_field :password, required:true%>
 </div>
 <div>
-    <%= form.label :password_confirmation%>
-    <%= form.password_field :password_confirmation, required :true%>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, required: true %>
+
 </div>
 <div>
     <%= form.submit "Sign up" %>

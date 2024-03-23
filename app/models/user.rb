@@ -41,6 +41,14 @@ class User < ApplicationRecord
         end
     end
 
+    def confirmable_email
+        if unconfirmed_email.present?
+          unconfirmed_email
+        else
+          email
+        end
+      end
+
     def generate_confirmation_token
         signed_id expires_in: CONFIRMATION_TOKEN_EXPIRATION, purpose: :confirm_email
     end

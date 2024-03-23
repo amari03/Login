@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_155529) do
     t.datetime "updated_at", null: false
     t.datetime "confirmed_at"
     t.string "password_digest", null: false
-    t.string "uncomfirmed_email"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
